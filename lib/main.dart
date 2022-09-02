@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sign_in_application/signup.dart';
 
 main() => runApp(const LogInApp());
 
@@ -47,7 +48,7 @@ class _LoginPageState extends State<LoginPage> {
 
   Expanded _getHeader() {
     return Expanded(
-      flex: 2,
+      flex: 3,
       child: Container(
         alignment: Alignment.bottomLeft,
         child: const Text("Welcome",
@@ -78,18 +79,24 @@ class _LoginPageState extends State<LoginPage> {
 
   Expanded _getSignIn() {
     return Expanded(
-      flex: 1,
+      flex: 2,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           const Text("Log in",
               style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500)),
-          CircleAvatar(
-            backgroundColor: Colors.grey.shade800,
-            radius: 40,
-            child: const Icon(
-              Icons.arrow_forward_ios,
-              color: Colors.white,
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const SignUpPage()));
+            },
+            child: CircleAvatar(
+              backgroundColor: Colors.grey.shade800,
+              radius: 40,
+              child: const Icon(
+                Icons.arrow_forward_ios,
+                color: Colors.white,
+              ),
             ),
           )
         ],
@@ -102,15 +109,21 @@ class _LoginPageState extends State<LoginPage> {
       flex: 1,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: const [
-          Text(
-            "Registration",
-            style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w500,
-                decoration: TextDecoration.underline),
+        children: [
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const SignUpPage()));
+            },
+            child: const Text(
+              "Registration",
+              style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500,
+                  decoration: TextDecoration.underline),
+            ),
           ),
-          Text(
+          const Text(
             "Forget password?",
             style: TextStyle(
                 fontSize: 15,
